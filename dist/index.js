@@ -2378,7 +2378,17 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     return (0, _helpers.classList)('table-component__th table-component__th--sort', this.column.headerClass);
                 }
 
-                return (0, _helpers.classList)('table-component__th table-component__th--sort-' + this.sort.order, this.column.headerClass);
+                return (0, _helpers.classList)('table-component__th table-component__th--sort-' + this.sort.order, this.sortClass, this.column.headerClass);
+            },
+
+
+            // for semantic-ui
+            sortClass: function sortClass() {
+                if (this.ariaSort === 'none') {
+                    return;
+                } else {
+                    return this.sort.order === 'asc' ? 'sorted ascending' : 'sorted descending';
+                }
             },
             isVisible: function isVisible() {
                 return !this.column.hidden;

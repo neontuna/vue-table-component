@@ -53,7 +53,7 @@
 
             // for semantic-ui
             sortClass() {
-                if (this.ariaSort() === 'none') {
+                if (this.ariaSort === 'none') {
                     return;
                 } else {
                     return this.sort.order === 'asc' ? 'sorted ascending' : 'sorted descending';
