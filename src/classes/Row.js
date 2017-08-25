@@ -31,7 +31,9 @@ export default class Row {
         let value = this.getValue(columnName);
 
         if (! value) {
-            return '';
+            // dirty hack so we don't need to override sort method to
+            // put nulls at the end
+            return 'ZZZZ';
         }
 
         if (value instanceof String) {
