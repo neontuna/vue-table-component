@@ -48,7 +48,16 @@
                     return classList('table-component__th table-component__th--sort', this.column.headerClass);
                 }
 
-                return classList(`table-component__th table-component__th--sort-${this.sort.order}`, this.column.headerClass);
+                return classList(`table-component__th table-component__th--sort-${this.sort.order}`, this.sortClass, this.column.headerClass);
+            },
+
+            // for semantic-ui
+            sortClass() {
+                if (this.ariaSort() === 'none') {
+                    return;
+                } else {
+                    return this.sort.order === 'asc' ? 'sorted ascending' : 'sorted descending';
+                }
             },
 
             isVisible() {
