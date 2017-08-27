@@ -34,6 +34,8 @@
                 <table-row
                         v-for="row in displayedRows"
                         :key="row.vueTableComponentInternalRowId"
+                        :active-class="activeClass"
+                        :active-id="activeId"
                         :row="row"
                         :columns="columns"
                 ></table-row>
@@ -89,6 +91,9 @@
             filterInputClass: {default: settings.filterInputClass},
             filterPlaceholder: {default: settings.filterPlaceholder},
             filterNoResults: {default: settings.filterNoResults},
+            activeClass: {default: 'active', type: String},
+            activeId: {default: ''}
+
         },
 
         data: () => ({

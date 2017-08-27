@@ -2490,7 +2490,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             tableClass: { default: _settings2.default.tableClass },
             filterInputClass: { default: _settings2.default.filterInputClass },
             filterPlaceholder: { default: _settings2.default.filterPlaceholder },
-            filterNoResults: { default: _settings2.default.filterNoResults }
+            filterNoResults: { default: _settings2.default.filterNoResults },
+            activeClass: { default: 'active', type: String },
+            activeId: { default: '' }
+
         },
 
         data: function data() {
@@ -2829,7 +2832,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     }
 
     exports.default = {
-        props: ['columns', 'row'],
+        props: ['columns', 'row', 'activeClass', 'activeId'],
 
         components: {
             TableCell: _TableCell2.default
@@ -8049,7 +8052,9 @@ module.exports = Component.exports
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', _vm._l((_vm.visibleColumns), function(column) {
+  return _c('tr', {
+    class: _vm.row.id === _vm.activeId ? _vm.activeClass : ''
+  }, _vm._l((_vm.visibleColumns), function(column) {
     return _c('table-cell', {
       attrs: {
         "row": _vm.row,
@@ -8145,6 +8150,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('table-row', {
       key: row.vueTableComponentInternalRowId,
       attrs: {
+        "active-class": _vm.activeClass,
+        "active-id": _vm.activeId,
         "row": row,
         "columns": _vm.columns
       }
