@@ -1,8 +1,5 @@
 <template>
-    <tr :class="row.id === activeId ? activeClass : ''">
-        {{ row }}
-        {{ activeId }}
-        {{ activeClass }} tt
+    <tr :class="row.data.id === activeId ? activeClass : ''">
         <table-cell
             v-for="column in visibleColumns"
             :row="row"
