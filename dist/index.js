@@ -8053,15 +8053,15 @@ module.exports = Component.exports
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', {
-    class: _vm.row.id === _vm.activeId ? _vm.activeClass : ''
-  }, [_vm._v("\n    " + _vm._s(_vm.row) + "\n    " + _vm._s(_vm.activeId) + "\n    " + _vm._s(_vm.activeClass) + " tt\n    "), _vm._l((_vm.visibleColumns), function(column) {
+    class: _vm.row.data.id === _vm.activeId ? _vm.activeClass : ''
+  }, _vm._l((_vm.visibleColumns), function(column) {
     return _c('table-cell', {
       attrs: {
         "row": _vm.row,
         "column": column
       }
     })
-  })], 2)
+  }))
 },staticRenderFns: []}
 
 /***/ }),
