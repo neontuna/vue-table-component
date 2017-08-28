@@ -3149,10 +3149,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             if (props.column.dataType.startsWith('date')) {
                 var format = props.column.dataType.replace('date:', '');
 
-                // datetime HAS to be in ISO8601 format.  Could look for "z" at the end of the date
-                // or some other indicator that moment.utc shouldn't be used but hey we forked this
-                // for a reason, right :)
-                data.domProps.innerHTML = _moment2.default.utc(props.row.getValue(props.column.show)).format(format);
+                // datetime HAS to be in ISO8601 format.  Will likely need to revisit
+                // this once time zones other than EST are being used
+                data.domProps.innerHTML = (0, _moment2.default)(props.row.getValue(props.column.show)).format(format);
             } else {
                 data.domProps.innerHTML = props.column.formatter(props.row.getValue(props.column.show), props.row.data);
             }
