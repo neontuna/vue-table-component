@@ -41,9 +41,13 @@ export default class Row {
         }
 
         if (dataType.startsWith('date')) {
-            const format  = dataType.replace('date:', '');
+            // const format  = dataType.replace('date:', '');
 
-            return moment(value, format).format('YYYYMMDDHHmmss');
+            // return moment(value, format).format('YYYYMMDDHHmmss');
+
+            // assuming valid format is passed to date, aftertag will use ISO8601
+
+            return moment(value).format('YYYYMMDDHHmmss');
         }
 
         if (dataType === 'numeric') {
