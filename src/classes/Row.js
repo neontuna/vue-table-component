@@ -50,7 +50,9 @@ export default class Row {
             return moment(value).format('YYYYMMDDHHmmss');
         }
 
-        if (dataType === 'numeric') {
+        if (dataType === 'numeric' && value instanceof String) {
+            return Number(value);
+        } else if (dataType === 'numeric') {
             return value;
         }
 

@@ -3084,7 +3084,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     return (0, _moment2.default)(value).format('YYYYMMDDHHmmss');
                 }
 
-                if (dataType === 'numeric') {
+                if (dataType === 'numeric' && value instanceof String) {
+                    return Number(value);
+                } else if (dataType === 'numeric') {
                     return value;
                 }
 
