@@ -111,6 +111,7 @@
         }),
 
         created() {
+            console.log('test netlify update');
             this.sort.fieldName = this.sortBy;
             this.sort.order = this.sortOrder;
 
