@@ -42,8 +42,8 @@ export default class Column {
 
                 // secondary sort
                 if (!(value1 > value2 || value1 < value2) && secondarySortField) {
-                    const sValue1 = row1.getSortableValue(secondarySortField);
-                    const sValue2 = row2.getSortableValue(secondarySortField);   
+                    const sValue1 = row1.getValue(secondarySortField).toLowerCase();
+                    const sValue2 = row2.getValue(secondarySortField).toLowerCase();   
 
                     return sValue1.localeCompare(sValue2);     
                 }
@@ -62,8 +62,8 @@ export default class Column {
 
             // secondary sort
             if (!(value2.localeCompare(value1) || value1.localeCompare(value2)) && secondarySortField) {
-                const sValue1 = row1.getSortableValue(sortFieldName);
-                const sValue2 = row2.getSortableValue(sortFieldName);
+                const sValue1 = row1.getValue(secondarySortField).toLowerCase();
+                const sValue2 = row2.getValue(secondarySortField).toLowerCase();
 
                 return sValue1.localeCompare(sValue2);
             }
