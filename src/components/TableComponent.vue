@@ -83,6 +83,7 @@
 
             sortBy: {default: '', type: String},
             sortOrder: {default: '', type: String},
+            secondarySortBy: {default: '', type: String},
 
             cacheId: {default: ''},
             cacheLifetime: {default: 5},
@@ -189,7 +190,7 @@
                     return this.rows;
                 }
 
-                return this.rows.sort(sortColumn.getSortPredicate(this.sort.order, this.columns));
+                return this.rows.sort(sortColumn.getSortPredicate(this.sort.order, this.columns, this.secondarySortBy));
             },
 
             storageKey() {

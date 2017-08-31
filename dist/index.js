@@ -2490,6 +2490,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
             sortBy: { default: '', type: String },
             sortOrder: { default: '', type: String },
+            secondarySortBy: { default: '', type: String },
 
             cacheId: { default: '' },
             cacheLifetime: { default: 5 },
@@ -2617,7 +2618,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     return this.rows;
                 }
 
-                return this.rows.sort(sortColumn.getSortPredicate(this.sort.order, this.columns));
+                return this.rows.sort(sortColumn.getSortPredicate(this.sort.order, this.columns, this.secondarySortBy));
             },
             storageKey: function storageKey() {
                 return 'vue-table-component.' + window.location.host + window.location.pathname + this.cacheId;
@@ -2923,7 +2924,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             }
         }, {
             key: 'getSortPredicate',
-            value: function getSortPredicate(sortOrder, allColumns) {
+            value: function getSortPredicate(sortOrder, allColumns, secondarySortField) {
                 var sortFieldName = this.getSortFieldName();
 
                 var sortColumn = allColumns.find(function (column) {
@@ -2938,6 +2939,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                         var value1 = row1.getSortableValue(sortFieldName);
                         var value2 = row2.getSortableValue(sortFieldName);
 
+                        // secondary sort
+                        if (!(value1 > value2 || value1 < value2)) {
+                            var sValue1 = row1.getSortableValue(secondarySortField);
+                            var sValue2 = row2.getSortableValue(secondarySortField);
+
+                            return sValue1.localeCompare(sValue2);
+                        }
+
                         if (sortOrder === 'desc') {
                             return value2 < value1 ? -1 : 1;
                         }
@@ -2949,6 +2958,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return function (row1, row2) {
                     var value1 = row1.getSortableValue(sortFieldName);
                     var value2 = row2.getSortableValue(sortFieldName);
+
+                    // secondary sort
+                    if (!(value2.localeCompare(value1) || value1.localeCompare(value2))) {
+                        var sValue1 = row1.getSortableValue(sortFieldName);
+                        var sValue2 = row2.getSortableValue(sortFieldName);
+
+                        return sValue1.localeCompare(sValue2);
+                    }
 
                     if (sortOrder === 'desc') {
                         return value2.localeCompare(value1);
