@@ -2517,7 +2517,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         },
 
         created: function created() {
-            console.log('test netlify update');
             this.sort.fieldName = this.sortBy;
             this.sort.order = this.sortOrder;
 
