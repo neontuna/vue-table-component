@@ -2940,7 +2940,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                         var value2 = row2.getSortableValue(sortFieldName);
 
                         // secondary sort
-                        if (!(value1 > value2 || value1 < value2)) {
+                        if (!(value1 > value2 || value1 < value2) && secondarySortField) {
                             var sValue1 = row1.getSortableValue(secondarySortField);
                             var sValue2 = row2.getSortableValue(secondarySortField);
 
@@ -2960,7 +2960,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                     var value2 = row2.getSortableValue(sortFieldName);
 
                     // secondary sort
-                    if (!(value2.localeCompare(value1) || value1.localeCompare(value2))) {
+                    if (!(value2.localeCompare(value1) || value1.localeCompare(value2)) && secondarySortField) {
                         var sValue1 = row1.getSortableValue(sortFieldName);
                         var sValue2 = row2.getSortableValue(sortFieldName);
 

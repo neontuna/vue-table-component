@@ -41,7 +41,7 @@ export default class Column {
                 const value2 = row2.getSortableValue(sortFieldName);
 
                 // secondary sort
-                if (!(value1 > value2 || value1 < value2)) {
+                if (!(value1 > value2 || value1 < value2) && secondarySortField) {
                     const sValue1 = row1.getSortableValue(secondarySortField);
                     const sValue2 = row2.getSortableValue(secondarySortField);   
 
@@ -61,7 +61,7 @@ export default class Column {
             const value2 = row2.getSortableValue(sortFieldName);
 
             // secondary sort
-            if (!(value2.localeCompare(value1) || value1.localeCompare(value2))) {
+            if (!(value2.localeCompare(value1) || value1.localeCompare(value2)) && secondarySortField) {
                 const sValue1 = row1.getSortableValue(sortFieldName);
                 const sValue2 = row2.getSortableValue(sortFieldName);
 
