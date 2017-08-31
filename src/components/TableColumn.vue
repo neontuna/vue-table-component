@@ -27,6 +27,7 @@
 
             cellClass: { default: settings.cellClass },
             headerClass: { default: settings.headerClass },
+            nullText: {default: ''}
         },
     };
 </script>

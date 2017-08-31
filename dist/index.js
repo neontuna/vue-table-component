@@ -2323,7 +2323,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             hidden: { default: false, type: Boolean },
 
             cellClass: { default: _settings2.default.cellClass },
-            headerClass: { default: _settings2.default.headerClass }
+            headerClass: { default: _settings2.default.headerClass },
+            nullText: { default: '' }
         }
     };
 });
@@ -2896,7 +2897,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         function Column(columnComponent) {
             (0, _classCallCheck3.default)(this, Column);
 
-            var properties = (0, _pick2.default)(columnComponent, ['show', 'label', 'dataType', 'sortable', 'sortBy', 'filterable', 'filterOn', 'hidden', 'formatter', 'cellClass', 'headerClass']);
+            var properties = (0, _pick2.default)(columnComponent, ['show', 'label', 'dataType', 'sortable', 'sortBy', 'filterable', 'filterOn', 'hidden', 'formatter', 'cellClass', 'headerClass', 'nullText']);
 
             for (var property in properties) {
                 this[property] = columnComponent[property];
@@ -3144,16 +3145,20 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return createElement('td', data, props.column.template(props.row.data));
             }
 
+            var value = props.row.getValue(props.column.show);
+
             data.domProps = {};
 
-            if (props.column.dataType.startsWith('date') && props.row.getValue(props.column.show)) {
+            if (props.column.dataType.startsWith('date') && value) {
                 var format = props.column.dataType.replace('date:', '');
 
                 // datetime HAS to be in ISO8601 format.  Will likely need to revisit
                 // this once time zones other than EST are being used
                 data.domProps.innerHTML = (0, _moment2.default)(props.row.getValue(props.column.show)).format(format);
-            } else {
+            } else if (value) {
                 data.domProps.innerHTML = props.column.formatter(props.row.getValue(props.column.show), props.row.data);
+            } else {
+                data.domProps.innerHTML = props.column.nullText;
             }
 
             return createElement('td', data);
