@@ -3146,7 +3146,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
             data.domProps = {};
 
-            if (props.column.dataType.startsWith('date')) {
+            if (props.column.dataType.startsWith('date') && props.row.getValue(props.column.show)) {
                 var format = props.column.dataType.replace('date:', '');
 
                 // datetime HAS to be in ISO8601 format.  Will likely need to revisit

@@ -18,7 +18,7 @@ export default {
 
         data.domProps = {};
 
-        if (props.column.dataType.startsWith('date')) {
+        if (props.column.dataType.startsWith('date') && props.row.getValue(props.column.show)) {
             const format  = props.column.dataType.replace('date:', '');
             
             // datetime HAS to be in ISO8601 format.  Will likely need to revisit
