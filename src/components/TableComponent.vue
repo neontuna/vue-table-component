@@ -93,6 +93,7 @@
             filterPlaceholder: {default: settings.filterPlaceholder},
             filterNoResults: {default: settings.filterNoResults},
             activeClass: {default: 'active', type: String},
+            activeFieldName: {default: 'id', type: String},
             activeId: {default: ''}
 
         },

@@ -1,5 +1,5 @@
 <template>
-    <tr :class="row.data.id === activeId ? activeClass : ''">
+    <tr :class="row.data[activeFieldName] === activeId ? activeClass : ''">
         <table-cell
             v-for="column in visibleColumns"
             :row="row"
@@ -12,7 +12,7 @@
     import TableCell from './TableCell';
 
     export default {
-        props: ['columns', 'row', 'activeClass', 'activeId'],
+        props: ['columns', 'row', 'activeClass', 'activeFieldName', 'activeId'],
 
         components: {
             TableCell,

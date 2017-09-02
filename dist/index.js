@@ -2497,6 +2497,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             filterPlaceholder: { default: _settings2.default.filterPlaceholder },
             filterNoResults: { default: _settings2.default.filterNoResults },
             activeClass: { default: 'active', type: String },
+            activeFieldName: { default: 'id', type: String },
             activeId: { default: '' }
 
         },
@@ -2837,7 +2838,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
     }
 
     exports.default = {
-        props: ['columns', 'row', 'activeClass', 'activeId'],
+        props: ['columns', 'row', 'activeClass', 'activeFieldName', 'activeId'],
 
         components: {
             TableCell: _TableCell2.default
@@ -25185,7 +25186,7 @@ module.exports = Component.exports
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('tr', {
-    class: _vm.row.data.id === _vm.activeId ? _vm.activeClass : ''
+    class: _vm.row.data[_vm.activeFieldName] === _vm.activeId ? _vm.activeClass : ''
   }, _vm._l((_vm.visibleColumns), function(column) {
     return _c('table-cell', {
       attrs: {
