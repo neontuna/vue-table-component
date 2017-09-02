@@ -25285,6 +25285,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "active-class": _vm.activeClass,
         "active-id": _vm.activeId,
+        "active-field-name": _vm.activeFieldName,
         "row": row,
         "columns": _vm.columns
       }

@@ -36,6 +36,7 @@
                         :key="row.vueTableComponentInternalRowId"
                         :active-class="activeClass"
                         :active-id="activeId"
+                        :active-field-name="activeFieldName"
                         :row="row"
                         :columns="columns"
                 ></table-row>
