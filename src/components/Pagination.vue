@@ -3,8 +3,8 @@
         <div class="ui centered pagination menu">
             <a 
                 class="icon item" 
-                :class="{ disabled: page === 1 }" 
-                @click.prevent="pageClicked( page - 1 )">
+                :class="{ disabled: pagination.currentPage === 1 }" 
+                @click="pageClicked( pagination.currentPage - 1 )">
                 <i class="left chevron icon"></i>
             </a>            
             <a 
@@ -16,8 +16,8 @@
             </a>
             <a 
                 class="icon item" 
-                :class="{ disabled: page === pages.length }" 
-                @click.prevent="pageClicked( page - 1 )">
+                :class="{ disabled: pagination.currentPage === pages.length }" 
+                @click="pageClicked( pagination.currentPage + 1 )">
                 <i class="right chevron icon"></i>
             </a>                
         </div>

@@ -25306,12 +25306,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('a', {
     staticClass: "icon item",
     class: {
-      disabled: _vm.page === 1
+      disabled: _vm.pagination.currentPage === 1
     },
     on: {
       "click": function($event) {
-        $event.preventDefault();
-        _vm.pageClicked(_vm.page - 1)
+        _vm.pageClicked(_vm.pagination.currentPage - 1)
       }
     }
   }, [_c('i', {
@@ -25331,12 +25330,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), _c('a', {
     staticClass: "icon item",
     class: {
-      disabled: _vm.page === _vm.pages.length
+      disabled: _vm.pagination.currentPage === _vm.pages.length
     },
     on: {
       "click": function($event) {
-        $event.preventDefault();
-        _vm.pageClicked(_vm.page - 1)
+        _vm.pageClicked(_vm.pagination.currentPage + 1)
       }
     }
   }, [_c('i', {
