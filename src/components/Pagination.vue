@@ -46,9 +46,6 @@
         methods: {
             isActive(page) {
                 const currentPage = this.pagination.currentPage || 1;
-                console.log(currentPage);
-                console.log(page);
-                console.log(currentPage === page);
 
                 return currentPage === page;
             },

@@ -2256,9 +2256,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
         methods: {
             isActive: function isActive(page) {
                 var currentPage = this.pagination.currentPage || 1;
-                console.log(currentPage);
-                console.log(page);
-                console.log(currentPage === page);
 
                 return currentPage === page;
             },
