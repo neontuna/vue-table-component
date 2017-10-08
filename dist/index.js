@@ -25202,22 +25202,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return (_vm.shouldShowPagination) ? _c('nav', [_c('ul', {
-    staticClass: "pagination justify-content-center"
+  return (_vm.shouldShowPagination) ? _c('nav', [_c('div', {
+    staticClass: "ui pagination menu justify-content-center"
   }, _vm._l((_vm.pages), function(page) {
-    return _c('li', {
-      staticClass: "page-item",
+    return _c('div', {
+      staticClass: "item",
       class: {
         active: _vm.isActive(page)
-      }
-    }, [_c('a', {
-      staticClass: "page-link",
+      },
       on: {
         "click": function($event) {
           _vm.pageClicked(page)
         }
       }
-    }, [_vm._v(_vm._s(page))])])
+    }, [_vm._v("\n            " + _vm._s(page) + "\n        ")])
   }))]) : _vm._e()
 },staticRenderFns: []}
 
