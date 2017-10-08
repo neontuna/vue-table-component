@@ -2260,7 +2260,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return currentPage === page;
             },
             pageClicked: function pageClicked(page) {
-                if (this.pagination.currentPage === page || this.pagination.pages.length < page || page < 1) {
+                if (this.pagination.currentPage === page || this.pages.length < page || page < 1) {
                     return;
                 }
 

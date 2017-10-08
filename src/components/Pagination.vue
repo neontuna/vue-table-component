@@ -64,7 +64,7 @@
 
             pageClicked(page) {
                 if (this.pagination.currentPage === page || 
-                    this.pagination.pages.length < page ||
+                    this.pages.length < page ||
                     page < 1) {
                     return;
                 }
