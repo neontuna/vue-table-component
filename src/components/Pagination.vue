@@ -1,13 +1,13 @@
 <template>
     <nav v-if="shouldShowPagination">
-        <div class="ui pagination menu justify-content-center">
-            <div 
+        <div class="ui centered pagination menu">
+            <a 
                 class="item" 
                 :class="{ active: isActive(page) }" 
                 v-for="page in pages"
                 @click="pageClicked(page)" >
                 {{ page }}
-            </div>
+            </a>
         </div>
     </nav>
 </template>
@@ -60,3 +60,9 @@
         },
     };
 </script>
+
+<style>
+    .ui.pagination.menu {
+        margin-top: 10px;
+    }
+</style>
