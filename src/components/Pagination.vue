@@ -4,7 +4,7 @@
             <a 
                 class="icon item" 
                 :class="{ disabled: pagination.currentPage === 1 }" 
-                @click.prevent="pageClicked( pagination.currentPage - 1 )">
+                @click="pageClicked( pagination.currentPage - 1 )">
                 <i class="left chevron icon"></i>
             </a>            
             <a 
@@ -17,7 +17,7 @@
             <a 
                 class="icon item" 
                 :class="{ disabled: pagination.currentPage === pages.length }" 
-                @click.prevent="pageClicked( pagination.currentPage + 1 )">
+                @click="pageClicked( pagination.currentPage + 1 )">
                 <i class="right chevron icon"></i>
             </a>                
         </div>
@@ -63,7 +63,9 @@
             },
 
             pageClicked(page) {
-                if (this.pagination.currentPage === page) {
+                if (this.pagination.currentPage === page || 
+                    this.pagination.pages.length < page ||
+                    page < 1) {
                     return;
                 }
 

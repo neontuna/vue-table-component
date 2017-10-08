@@ -2260,7 +2260,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 return currentPage === page;
             },
             pageClicked: function pageClicked(page) {
-                if (this.pagination.currentPage === page) {
+                if (this.pagination.currentPage === page || this.pagination.pages.length < page || page < 1) {
                     return;
                 }
 
@@ -25310,7 +25310,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
-        $event.preventDefault();
         _vm.pageClicked(_vm.pagination.currentPage - 1)
       }
     }
@@ -25335,7 +25334,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "click": function($event) {
-        $event.preventDefault();
         _vm.pageClicked(_vm.pagination.currentPage + 1)
       }
     }
