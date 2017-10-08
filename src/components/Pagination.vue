@@ -2,12 +2,24 @@
     <nav v-if="shouldShowPagination">
         <div class="ui centered pagination menu">
             <a 
+                class="icon item" 
+                :class="{ disabled: page === 1 }" 
+                @click.prevent="pageClicked( page - 1 )">
+                <i class="left chevron icon"></i>
+            </a>            
+            <a 
                 class="item" 
                 :class="{ active: isActive(page) }" 
                 v-for="page in pages"
                 @click="pageClicked(page)" >
                 {{ page }}
             </a>
+            <a 
+                class="icon item" 
+                :class="{ disabled: page === pages.length }" 
+                @click.prevent="pageClicked( page - 1 )">
+                <i class="right chevron icon"></i>
+            </a>                
         </div>
     </nav>
 </template>

@@ -25303,7 +25303,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return (_vm.shouldShowPagination) ? _c('nav', [_c('div', {
     staticClass: "ui centered pagination menu"
-  }, _vm._l((_vm.pages), function(page) {
+  }, [_c('a', {
+    staticClass: "icon item",
+    class: {
+      disabled: _vm.page === 1
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.pageClicked(_vm.page - 1)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "left chevron icon"
+  })]), _vm._v(" "), _vm._l((_vm.pages), function(page) {
     return _c('a', {
       staticClass: "item",
       class: {
@@ -25315,7 +25328,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("\n            " + _vm._s(page) + "\n        ")])
-  }))]) : _vm._e()
+  }), _vm._v(" "), _c('a', {
+    staticClass: "icon item",
+    class: {
+      disabled: _vm.page === _vm.pages.length
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.pageClicked(_vm.page - 1)
+      }
+    }
+  }, [_c('i', {
+    staticClass: "right chevron icon"
+  })])], 2)]) : _vm._e()
 },staticRenderFns: []}
 
 /***/ }),
