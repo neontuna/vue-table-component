@@ -1,10 +1,14 @@
 <template>
     <nav v-if="shouldShowPagination">
-        <ul class="pagination justify-content-center">
-            <li class="page-item" :class="{ active: isActive(page) }" v-for="page in pages">
-                <a class="page-link" @click="pageClicked(page)">{{ page }}</a>
-            </li>
-        </ul>
+        <div class="ui pagination menu justify-content-center">
+            <div 
+                class="item" 
+                :class="{ active: isActive(page) }" 
+                v-for="page in pages"
+                @click="pageClicked(page)" >
+                {{ page }}
+            </div>
+        </div>
     </nav>
 </template>
 
