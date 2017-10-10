@@ -45,7 +45,7 @@
                 let postDots = false;
                       
                 for (let i = 1; i <= this.pagination.totalPages; i++) {
-                    if (this.pagination.totalPages <= 8) {
+                    if (this.pagination.totalPages <= 10) {
                         arr.push(i);
                     } else {
                         if (i === 1) {
@@ -53,8 +53,11 @@
                       } else if (i === this.pagination.totalPages) {
                             arr.push(i);
                       } else if (
-                            (i > this.pagination.currentPage - 2 && i < this.pagination.currentPage + 2) ||
-                            (i < 5 && this.pagination.currentPage < 5) ||
+                            // link is within 4 of current
+                            (i > this.pagination.currentPage - 4 && i < this.pagination.currentPage + 4) ||
+                            // current and link less than 6
+                            (i < 4 && this.pagination.currentPage < 4) ||
+                            // current and link within 6 of end
                             (i > this.pagination.totalPages - 4 && this.pagination.currentPage > this.pagination.totalPages - 4)) {
                             arr.push(i);
                       } else if (i < this.pagination.currentPage && !preDots) {
