@@ -128,103 +128,39 @@
 </head>
 <body>
     <article id="app" class="page">
+
         <h1 class="page-title">
             <a href="https://github.com/spatie/vue-table-component">Vue-table-component</a>
         </h1>
         <table-component
-            :data="[
-                  {
-        'id': 196,
-        'name': 'Abshire Group',
-        'hours_to_invoice': 145.81,
-        'total_to_invoice': 21434.07,
-        'recent_invoice': '2017-08-28T13:27:30.017Z'
-    },
-    {
-        'id': 298,
-        'name': 'Anderson Group',
-        'hours_to_invoice': null,
-        'total_to_invoice': null,
-        'recent_invoice': '2017-08-27T21:35:51.366Z'
-    },
-    {
-        'id': 99,
-        'name': 'Ankunding, Carroll and Romaguera',
-        'hours_to_invoice': 17.15,
-        'total_to_invoice': 2795.45,
-        'recent_invoice': '2017-08-25T19:15:54.061Z'
-    },
-    {
-        'id': 163,
-        'name': 'Armstrong LLC',
-        'hours_to_invoice': 49.75,
-        'total_to_invoice': 9104.25,
-        'recent_invoice': '2017-08-28T13:28:05.476Z'
-    },
-    {
-        'id': 101,
-        'name': 'Auer LLC',
-        'hours_to_invoice': 152.97,
-        'total_to_invoice': 26616.78,
-        'recent_invoice': '2017-08-27T21:35:38.449Z'
-    },
-    {
-        'id': 70,
-        'name': 'Aufderhar Group',
-        'hours_to_invoice': null,
-        'total_to_invoice': null,
-        'recent_invoice': null
-    },
-    {
-        'id': 116,
-        'name': 'Haley LLC',
-        'hours_to_invoice': null,
-        'total_to_invoice': null,
-        'recent_invoice': null
-    },
-    {
-        'id': 132,
-        'name': 'Halvorson, Bechtelar and Bechtelar',
-        'hours_to_invoice': null,
-        'total_to_invoice': null,
-        'recent_invoice': null
-    },
-    {
-        'id': 201,
-        'name': 'Halvorson-Murphy',
-        'hours_to_invoice': null,
-        'total_to_invoice': null,
-        'recent_invoice': null
-    },
-            ]"
+            :data="tableData"
+          sort-by="created_at"
+          sort-order="desc"
+          :show-filter="false"
+          :show-caption="false">
 
-                 sort-by="total_to_invoice"
-        secondary-sort-by="name"
-      sort-order="asc">
-
-      <table-column show="name" label="Company">
+      
+<table-column show="number" label="Number" cell-class="collapsing">
         <template scope="row">
-            {{ row.name }}
+
+            {{ row.number }}
+
         </template>
       </table-column>
-      <table-column show="hours_to_invoice" label="Pending Hours" data-type="numeric" null-text="..."></table-column>
-      <table-column show="total_to_invoice" label="Total Due" data-type="numeric">
+      <table-column show="title" label="Title"></table-column>
+      <table-column show="contact.last_name" label="Contact">
         <template scope="row">
-          {{ row.total_to_invoice ? row.total_to_invoice.toLocaleString('en-US', {style: 'currency', currency: 'USD'}) : '...' }}
+          <span v-if="row.contact !== null">
+           {{ row.contact.first_name }} {{ row.contact.last_name }}
+          </span>
+          <span v-else>
+            ...
+          </span>
         </template>
       </table-column>
-      <table-column show="recent_invoice" label="Last Invoice Created" data-type="date:MM/DD/YYYY" null-text="No Invoices"></table-column>
-      <table-column 
-        label="" 
-        :sortable="false" 
-        :filterable="false">
-        <template scope="row">
+      <table-column show="company.name" label="Company"></table-column>
+      <table-column show="created_at" label="Created" data-type="date:MM/DD/YY - h:mm A" cell-class="collapsing"></table-column>
 
-              Create Invoice   
-
-        </template>
-      </table-column>   
-    </table-component>
         </table-component>
 
     <section class="page-about">

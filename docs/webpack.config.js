@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 module.exports = merge(require('../webpack.base'), {
@@ -22,4 +23,12 @@ module.exports = merge(require('../webpack.base'), {
         contentBase: __dirname,
         port: 2000,
     },
+
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'DEV_TOKEN': JSON.stringify(process.env.DEV_TOKEN),
+            },
+        }),
+    ],
 });

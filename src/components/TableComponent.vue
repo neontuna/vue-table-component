@@ -67,7 +67,7 @@
     import isArray from 'lodash/isArray';
     import pick from 'lodash/pick';
     import Pagination from './Pagination';
-    import {classList} from '../helpers';
+    import { classList } from '../helpers';
 
     export default {
         components: {
@@ -77,25 +77,25 @@
         },
 
         props: {
-            data: {default: () => [], type: [Array, Function]},
+            data: { default: () => [], type: [Array, Function] },
 
-            showFilter: {default: true},
-            showCaption: {default: true},
+            showFilter: { default: true },
+            showCaption: { default: true },
 
-            sortBy: {default: '', type: String},
-            sortOrder: {default: '', type: String},
-            secondarySortBy: {default: '', type: String},
+            sortBy: { default: '', type: String },
+            sortOrder: { default: '', type: String },
+            secondarySortBy: { default: '', type: String },
 
-            cacheId: {default: ''},
-            cacheLifetime: {default: 5},
+            cacheId: { default: '' },
+            cacheLifetime: { default: 5 },
 
-            tableClass: {default: settings.tableClass},
-            filterInputClass: {default: settings.filterInputClass},
-            filterPlaceholder: {default: settings.filterPlaceholder},
-            filterNoResults: {default: settings.filterNoResults},
-            activeClass: {default: 'active', type: String},
-            activeFieldName: {default: 'id', type: String},
-            activeId: {default: ''}
+            tableClass: { default: settings.tableClass },
+            filterInputClass: { default: settings.filterInputClass },
+            filterPlaceholder: { default: settings.filterPlaceholder },
+            filterNoResults: { default: settings.filterNoResults },
+            activeClass: { default: 'active', type: String },
+            activeFieldName: { default: 'id', type: String },
+            activeId: { default: '' },
 
         },
 
