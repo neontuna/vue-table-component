@@ -232,15 +232,17 @@
             async fetchServerData() {
                 const page = this.pagination && this.pagination.currentPage || 1;
 
-                const response = await cloneDeep(this.data({
+                let response = await this.data({
                     filter: this.filter,
                     sort: this.sort,
                     page: page,
-                }));
+                });
+
+                response = cloneDeep(response);
 
                 this.pagination = response.pagination;
 
-                return response.data;  // avoid mutating state if this is the return of a vuex action
+                return response.data;  // avoid mutating state if this is the return
             },
 
             async refresh() {

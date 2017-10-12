@@ -3254,21 +3254,23 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                                 case 0:
                                     page = this.pagination && this.pagination.currentPage || 1;
                                     _context4.next = 3;
-                                    return (0, _cloneDeep2.default)(this.data({
+                                    return this.data({
                                         filter: this.filter,
                                         sort: this.sort,
                                         page: page
-                                    }));
+                                    });
 
                                 case 3:
                                     response = _context4.sent;
 
 
+                                    response = (0, _cloneDeep2.default)(response);
+
                                     this.pagination = response.pagination;
 
                                     return _context4.abrupt('return', response.data);
 
-                                case 6:
+                                case 7:
                                 case 'end':
                                     return _context4.stop();
                             }
