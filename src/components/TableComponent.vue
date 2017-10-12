@@ -66,7 +66,7 @@
     import settings from '../settings';
     import isArray from 'lodash/isArray';
     import pick from 'lodash/pick';
-    import clone from 'lodash/clone';
+    import cloneDeep from 'lodash/cloneDeep';
     import Pagination from './Pagination';
     import { classList } from '../helpers';
 
@@ -240,7 +240,7 @@
 
                 this.pagination = response.pagination;
 
-                return clone(response.data);  // avoid mutating state if this is the return of a vuex action
+                return cloneDeep(response.data);  // avoid mutating state if this is the return of a vuex action
             },
 
             async refresh() {

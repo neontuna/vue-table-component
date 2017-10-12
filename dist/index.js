@@ -2965,15 +2965,15 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
     } else if (typeof exports !== "undefined") {
-        factory(exports, require('babel-runtime/regenerator'), require('babel-runtime/helpers/asyncToGenerator'), require('../classes/Column'), require('../expiring-storage'), require('../classes/Row'), require('./TableColumnHeader'), require('./TableRow'), require('../settings'), require('lodash/isArray'), require('lodash/pick'), require('lodash/clone'), require('./Pagination'), require('../helpers'));
+        factory(exports, require('babel-runtime/regenerator'), require('babel-runtime/helpers/asyncToGenerator'), require('../classes/Column'), require('../expiring-storage'), require('../classes/Row'), require('./TableColumnHeader'), require('./TableRow'), require('../settings'), require('lodash/isArray'), require('lodash/pick'), require('lodash/cloneDeep'), require('./Pagination'), require('../helpers'));
     } else {
         var mod = {
             exports: {}
         };
-        factory(mod.exports, global.regenerator, global.asyncToGenerator, global.Column, global.expiringStorage, global.Row, global.TableColumnHeader, global.TableRow, global.settings, global.isArray, global.pick, global.clone, global.Pagination, global.helpers);
+        factory(mod.exports, global.regenerator, global.asyncToGenerator, global.Column, global.expiringStorage, global.Row, global.TableColumnHeader, global.TableRow, global.settings, global.isArray, global.pick, global.cloneDeep, global.Pagination, global.helpers);
         global.TableComponent = mod.exports;
     }
-})(this, function (exports, _regenerator, _asyncToGenerator2, _Column, _expiringStorage, _Row, _TableColumnHeader, _TableRow, _settings, _isArray, _pick, _clone, _Pagination, _helpers) {
+})(this, function (exports, _regenerator, _asyncToGenerator2, _Column, _expiringStorage, _Row, _TableColumnHeader, _TableRow, _settings, _isArray, _pick, _cloneDeep, _Pagination, _helpers) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -3000,7 +3000,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
     var _pick2 = _interopRequireDefault(_pick);
 
-    var _clone2 = _interopRequireDefault(_clone);
+    var _cloneDeep2 = _interopRequireDefault(_cloneDeep);
 
     var _Pagination2 = _interopRequireDefault(_Pagination);
 
@@ -3266,7 +3266,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
                                     this.pagination = response.pagination;
 
-                                    return _context4.abrupt('return', (0, _clone2.default)(response.data));
+                                    return _context4.abrupt('return', (0, _cloneDeep2.default)(response.data));
 
                                 case 6:
                                 case 'end':
@@ -7789,39 +7789,32 @@ module.exports = stringToPath;
 var baseClone = __webpack_require__(165);
 
 /** Used to compose bitmasks for cloning. */
-var CLONE_SYMBOLS_FLAG = 4;
+var CLONE_DEEP_FLAG = 1,
+    CLONE_SYMBOLS_FLAG = 4;
 
 /**
- * Creates a shallow clone of `value`.
- *
- * **Note:** This method is loosely based on the
- * [structured clone algorithm](https://mdn.io/Structured_clone_algorithm)
- * and supports cloning arrays, array buffers, booleans, date objects, maps,
- * numbers, `Object` objects, regexes, sets, strings, symbols, and typed
- * arrays. The own enumerable properties of `arguments` objects are cloned
- * as plain objects. An empty object is returned for uncloneable values such
- * as error objects, functions, DOM nodes, and WeakMaps.
+ * This method is like `_.clone` except that it recursively clones `value`.
  *
  * @static
  * @memberOf _
- * @since 0.1.0
+ * @since 1.0.0
  * @category Lang
- * @param {*} value The value to clone.
- * @returns {*} Returns the cloned value.
- * @see _.cloneDeep
+ * @param {*} value The value to recursively clone.
+ * @returns {*} Returns the deep cloned value.
+ * @see _.clone
  * @example
  *
  * var objects = [{ 'a': 1 }, { 'b': 2 }];
  *
- * var shallow = _.clone(objects);
- * console.log(shallow[0] === objects[0]);
- * // => true
+ * var deep = _.cloneDeep(objects);
+ * console.log(deep[0] === objects[0]);
+ * // => false
  */
-function clone(value) {
-  return baseClone(value, CLONE_SYMBOLS_FLAG);
+function cloneDeep(value) {
+  return baseClone(value, CLONE_DEEP_FLAG | CLONE_SYMBOLS_FLAG);
 }
 
-module.exports = clone;
+module.exports = cloneDeep;
 
 
 /***/ }),
