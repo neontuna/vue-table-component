@@ -3254,11 +3254,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                                 case 0:
                                     page = this.pagination && this.pagination.currentPage || 1;
                                     _context4.next = 3;
-                                    return this.data({
+                                    return (0, _cloneDeep2.default)(this.data({
                                         filter: this.filter,
                                         sort: this.sort,
                                         page: page
-                                    });
+                                    }));
 
                                 case 3:
                                     response = _context4.sent;
@@ -3266,7 +3266,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
                                     this.pagination = response.pagination;
 
-                                    return _context4.abrupt('return', (0, _cloneDeep2.default)(response.data));
+                                    return _context4.abrupt('return', response.data);
 
                                 case 6:
                                 case 'end':
