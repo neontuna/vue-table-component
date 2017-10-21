@@ -34,6 +34,9 @@
                 <table-row
                         v-for="row in displayedRows"
                         :key="row.vueTableComponentInternalRowId"
+                        :active-class="activeClass"
+                        :active-id="activeId"
+                        :active-field-name="activeFieldName"
                         :row="row"
                         :columns="columns"
                 ></table-row>
@@ -63,6 +66,7 @@
     import settings from '../settings';
     import isArray from 'lodash/isArray';
     import pick from 'lodash/pick';
+    import cloneDeep from 'lodash/cloneDeep';
     import Pagination from './Pagination';
     import { classList } from '../helpers';
 
@@ -74,7 +78,7 @@
         },
 
         props: {
-            data: {default: () => [], type: [Array, Function]},
+            data: { default: () => [], type: [Array, Function] },
 
             showFilter: { default: true },
             showCaption: { default: true },
@@ -91,6 +95,9 @@
             filterInputClass: { default: settings.filterInputClass },
             filterPlaceholder: { default: settings.filterPlaceholder },
             filterNoResults: { default: settings.filterNoResults },
+            activeClass: { default: 'active', type: String },
+            activeFieldName: { default: 'id', type: String },
+            activeId: { default: '' },
         },
 
         data: () => ({
@@ -216,7 +223,7 @@
                     return this.rows;
                 }
 
-                return this.rows.sort(sortColumn.getSortPredicate(this.sort.order, this.columns));
+                return this.rows.sort(sortColumn.getSortPredicate(this.sort.order, this.columns, this.secondarySortBy));
             },
 
             filterableColumnExists() {
@@ -261,15 +268,17 @@
             async fetchServerData() {
                 const page = this.pagination && this.pagination.currentPage || 1;
 
-                const response = await this.data({
+                let response = await this.data({
                     filter: this.filter,
                     sort: this.sort,
                     page: page,
                 });
 
+                response = cloneDeep(response); // avoid mutating state if this is the return
+
                 this.pagination = response.pagination;
 
-                return response.data;
+                return response.data;  
             },
 
             async refresh() {

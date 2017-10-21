@@ -1,5 +1,5 @@
 import moment from 'moment';
-import get from 'lodash/get';
+import { get, isString } from 'lodash';
 
 export default class Row {
     constructor(data, columns) {
@@ -30,22 +30,33 @@ export default class Row {
 
         let value = this.getValue(columnName);
 
-        if (value === undefined) {
-            return '';
+        // gross hack for numbers and strings, put nulls at the end
+        // date seems to do this by default
+        if (dataType === 'numeric' && ! value) {
+            return 999999999999999999999999;
+        } else if (! value) {
+            return 'ZZZZ';
         }
 
-        if (value instanceof String) {
-            value = value.toLowerCase();
+        if (dataType === 'numeric' && isString(value)) {
+            return Number(value);
+        } else if (dataType === 'numeric') {
+            return value;
+
         }
 
         if (dataType.startsWith('date')) {
-            const format  = dataType.replace('date:', '');
+            // const format  = dataType.replace('date:', '');
 
-            return moment(value, format).format('YYYYMMDDHHmmss');
-        }
+            // return moment(value, format).format('YYYYMMDDHHmmss');
 
-        if (dataType === 'numeric') {
-            return value;
+            // assuming valid format is passed to date, aftertag will use ISO8601
+
+            return moment(value).format('YYYYMMDDHHmmss');
+        }                
+
+        if (value instanceof String) {
+            value = value.toLowerCase();
         }
 
         return value.toString();

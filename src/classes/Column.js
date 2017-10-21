@@ -4,7 +4,7 @@ export default class Column {
     constructor(columnComponent) {
         const properties = pick(columnComponent, [
             'show', 'label', 'dataType', 'sortable', 'sortBy', 'filterable',
-            'filterOn', 'hidden', 'formatter', 'cellClass', 'headerClass',
+            'filterOn', 'hidden', 'formatter', 'cellClass', 'headerClass', 'nullText',
         ]);
 
         for (const property in properties) {
@@ -27,7 +27,7 @@ export default class Column {
         return this.sortable;
     }
 
-    getSortPredicate(sortOrder, allColumns) {
+    getSortPredicate(sortOrder, allColumns, secondarySortField) {
         const sortFieldName = this.getSortFieldName();
 
         const sortColumn = allColumns.find(column => column.show === sortFieldName);
@@ -40,6 +40,14 @@ export default class Column {
                 const value1 = row1.getSortableValue(sortFieldName);
                 const value2 = row2.getSortableValue(sortFieldName);
 
+                // secondary sort
+                if (!(value1 > value2 || value1 < value2) && secondarySortField) {
+                    const sValue1 = row1.getValue(secondarySortField).toLowerCase();
+                    const sValue2 = row2.getValue(secondarySortField).toLowerCase();   
+
+                    return sValue1.localeCompare(sValue2);     
+                }
+
                 if (sortOrder === 'desc') {
                     return value2 < value1 ? -1 : 1;
                 }
@@ -51,6 +59,14 @@ export default class Column {
         return (row1, row2) => {
             const value1 = row1.getSortableValue(sortFieldName);
             const value2 = row2.getSortableValue(sortFieldName);
+
+            // secondary sort
+            if (!(value2.localeCompare(value1) || value1.localeCompare(value2)) && secondarySortField) {
+                const sValue1 = row1.getValue(secondarySortField).toLowerCase();
+                const sValue2 = row2.getValue(secondarySortField).toLowerCase();
+
+                return sValue1.localeCompare(sValue2);
+            }
 
             if (sortOrder === 'desc') {
                 return value2.localeCompare(value1);
