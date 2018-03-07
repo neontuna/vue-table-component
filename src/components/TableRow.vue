@@ -1,11 +1,16 @@
 <template>
-    <tr :class="row.data[activeFieldName] === activeId ? activeClass : ''">
-        <table-cell
-            v-for="column in visibleColumns"
-            :row="row"
-            :column="column"
-        ></table-cell>
-    </tr>
+    <tbody>    
+        <tr :class="row.data[activeFieldName] === activeId ? activeClass : ''">
+            <table-cell
+                v-for="column in visibleColumns"
+                :row="row"
+                :column="column"
+            ></table-cell>
+        </tr>
+        <slot name="parentextrarow">
+            
+        </slot>
+    </tbody>
 </template>
 
 <script>

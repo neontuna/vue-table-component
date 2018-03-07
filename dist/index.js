@@ -26153,7 +26153,7 @@ module.exports = Component.exports
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tr', {
+  return _c('tbody', [_c('tr', {
     class: _vm.row.data[_vm.activeFieldName] === _vm.activeId ? _vm.activeClass : ''
   }, _vm._l((_vm.visibleColumns), function(column) {
     return _c('table-cell', {
@@ -26162,7 +26162,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "column": column
       }
     })
-  }))
+  })), _vm._v(" "), _vm._t("parentextrarow")], 2)
 },staticRenderFns: []}
 
 /***/ }),
@@ -26269,9 +26269,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "click": _vm.changeSorting
       }
     })
-  }))]), _vm._v(" "), _c('tbody', _vm._l((_vm.displayedRows), function(row) {
-    return _c('table-row', {
+  }))]), _vm._v(" "), _vm._l((_vm.displayedRows), function(row) {
+    return _c("table-row", {
       key: row.vueTableComponentInternalRowId,
+      tag: "tbody",
       attrs: {
         "active-class": _vm.activeClass,
         "active-id": _vm.activeId,
@@ -26279,8 +26280,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "row": row,
         "columns": _vm.columns
       }
-    })
-  }))])]), _vm._v(" "), (_vm.displayedRows.length === 0) ? _c('div', {
+    }, [_c('template', {
+      slot: "parentextrarow"
+    }, [_vm._t("extrarow", null, {
+      row: row
+    })], 2)], 2)
+  })], 2)]), _vm._v(" "), (_vm.displayedRows.length === 0) ? _c('div', {
     staticClass: "table-component__message"
   }, [_vm._v("\n        " + _vm._s(_vm.filterNoResults) + "\n    ")]) : _vm._e(), _vm._v(" "), _c('div', {
     staticStyle: {
