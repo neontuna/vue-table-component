@@ -30,18 +30,16 @@
                     ></table-column-header>
                 </tr>
                 </thead>
-                <tbody is="table-row"
-                    v-for="row in displayedRows"
-                    :key="row.vueTableComponentInternalRowId"
-                    :active-class="activeClass"
-                    :active-id="activeId"
-                    :active-field-name="activeFieldName"
-                    :row="row"
-                    :columns="columns"
-                >
-                    <template slot="parentextrarow">
-                        <slot name="extrarow" :row="row"></slot>
-                    </template>
+                <tbody>
+                <table-row
+                        v-for="row in displayedRows"
+                        :key="row.vueTableComponentInternalRowId"
+                        :active-class="activeClass"
+                        :active-id="activeId"
+                        :active-field-name="activeFieldName"
+                        :row="row"
+                        :columns="columns"
+                ></table-row>
                 </tbody>
             </table>
         </div>
