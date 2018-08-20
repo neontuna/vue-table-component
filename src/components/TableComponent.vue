@@ -21,6 +21,7 @@
                 </caption>
                 <thead>
                 <tr>
+                    <th v-if="showEdit"></th>
                     <table-column-header
                             @click="changeSorting"
                             v-for="column in columns"
@@ -37,8 +38,10 @@
                         :active-class="activeClass"
                         :active-id="activeId"
                         :active-field-name="activeFieldName"
+                        :show-edit="showEdit"
                         :row="row"
                         :columns="columns"
+                        v-model="checkedRows"
                 ></table-row>
                 </tbody>
             </table>
@@ -82,6 +85,7 @@
 
             showFilter: { default: true },
             showCaption: { default: true },
+            showEdit: { default: false },
 
             sortBy: { default: '', type: String },
             sortOrder: { default: '', type: String },
@@ -111,6 +115,7 @@
             pagination: null,
 
             localSettings: {},
+            checkedRows: [],
         }),
 
         created() {
@@ -141,6 +146,10 @@
                 if (this.usesLocalData) {
                     this.mapDataToRows();
                 }
+            },
+
+            checkedRows(val) {
+                this.$emit('edit-checked', val)
             },
         },
 

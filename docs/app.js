@@ -9,6 +9,12 @@ new Vue({
         TableColumn,
         TableComponent,
     },
+    data() {
+        return {
+            showEdit: true,
+            checkedRows: [],
+        };
+    },
     methods: {
         async tableData({ page, filter, sort }) {
             const params = {};
