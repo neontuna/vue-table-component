@@ -26203,7 +26203,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  })])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.visibleColumns), function(column) {
+  }), _vm._v(" "), _c('label', [_vm._v(" ")])])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.visibleColumns), function(column) {
     return _c('table-cell', {
       attrs: {
         "row": _vm.row,

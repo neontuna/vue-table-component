@@ -3,6 +3,7 @@
         <td v-if="showEdit">
             <div class="ui checkbox">
                 <input type="checkbox" v-model="internalValue" :value="row.data.id">
+                <label>&nbsp;</label>
             </div>
         </td>
         <table-cell
