@@ -256,7 +256,9 @@
 
             async refresh() {
                 await this.mapDataToRows();
+            },
 
+            resetCheckedRows() {
                 this.checkedRows = []
             },
 

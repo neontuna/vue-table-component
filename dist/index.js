@@ -3602,10 +3602,6 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                                     return this.mapDataToRows();
 
                                 case 2:
-
-                                    this.checkedRows = [];
-
-                                case 3:
                                 case 'end':
                                     return _context5.stop();
                             }
@@ -3619,6 +3615,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
                 return refresh;
             }(),
+            resetCheckedRows: function resetCheckedRows() {
+                this.checkedRows = [];
+            },
             changeSorting: function changeSorting(column) {
                 if (this.sort.fieldName !== column.show) {
                     this.sort.fieldName = column.show;
