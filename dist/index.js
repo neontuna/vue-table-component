@@ -3468,6 +3468,30 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             },
             storageKey: function storageKey() {
                 return 'vue-table-component.' + window.location.host + window.location.pathname + this.cacheId;
+            },
+
+
+            checkedAll: {
+                get: function get() {
+                    return this.rows.length === this.checkedRows.length;
+                },
+
+                set: function set(value) {
+                    var _this2 = this;
+
+                    if (value) {
+                        // We've checked the All checkbox
+                        // Starting with an empty list
+                        this.checkedRows = [];
+                        // Adding all the items IDs
+                        this.rows.forEach(function (item) {
+                            _this2.checkedRows.push(item.data.id);
+                        });
+                    } else {
+                        // We've unchecked the All checkbox
+                        this.checkedRows = [];
+                    }
+                }
             }
         },
 
@@ -3499,7 +3523,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
             }(),
             mapDataToRows: function () {
                 var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
-                    var _this2 = this;
+                    var _this3 = this;
 
                     var data, rowId;
                     return _regenerator2.default.wrap(function _callee3$(_context3) {
@@ -3531,7 +3555,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                                         rowData.vueTableComponentInternalRowId = rowId++;
                                         return rowData;
                                     }).map(function (rowData) {
-                                        return new _Row2.default(rowData, _this2.columns);
+                                        return new _Row2.default(rowData, _this3.columns);
                                     });
 
                                 case 10:
@@ -26579,7 +26603,44 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "role": "alert",
       "aria-live": "polite"
     }
-  }, [_vm._v("\n                " + _vm._s(_vm.ariaCaption) + "\n            ")]) : _vm._e(), _vm._v(" "), _c('thead', [_c('tr', [(_vm.showEdit) ? _c('th') : _vm._e(), _vm._v(" "), _vm._l((_vm.columns), function(column) {
+  }, [_vm._v("\n                " + _vm._s(_vm.ariaCaption) + "\n            ")]) : _vm._e(), _vm._v(" "), _c('thead', [_c('tr', [(_vm.showEdit) ? _c('th', {
+    on: {
+      "click": function($event) {
+        $event.stopPropagation();
+      }
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.checkedAll),
+      expression: "checkedAll"
+    }],
+    attrs: {
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.checkedAll) ? _vm._i(_vm.checkedAll, null) > -1 : (_vm.checkedAll)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.checkedAll,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.checkedAll = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.checkedAll = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.checkedAll = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', [_vm._v("All")])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.columns), function(column) {
     return _c('table-column-header', {
       key: column.show,
       attrs: {

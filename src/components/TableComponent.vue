@@ -21,7 +21,10 @@
                 </caption>
                 <thead>
                 <tr>
-                    <th v-if="showEdit"></th>
+                    <th v-if="showEdit" @click.stop="">
+                        <input type="checkbox" v-model="checkedAll">
+                        <label>All</label>
+                    </th>
                     <table-column-header
                             @click="changeSorting"
                             v-for="column in columns"
@@ -208,6 +211,26 @@
             storageKey() {
                 return `vue-table-component.${window.location.host}${window.location.pathname}${this.cacheId}`;
             },
+
+            checkedAll: {
+                get: function() {
+                    return this.rows.length === this.checkedRows.length;
+                },
+
+                set: function(value) {
+                    if (value) {
+                        // We've checked the All checkbox
+                        // Starting with an empty list
+                        this.checkedRows = [];
+                        // Adding all the items IDs
+                        this.rows.forEach(item => { this.checkedRows.push(item.data.id); });
+
+                    } else {
+                        // We've unchecked the All checkbox
+                        this.checkedRows = [];
+                    }
+                }
+            }
         },
 
         methods: {
