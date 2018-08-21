@@ -3675,6 +3675,11 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                 this.filter = previousState.filter;
 
                 this.saveState();
+            },
+            toggleCheckedAll: function toggleCheckedAll() {
+                if (this.showEdit) {
+                    this.checkedAll = !this.checkedAll;
+                }
             }
         }
     };
@@ -26606,7 +26611,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("\n                " + _vm._s(_vm.ariaCaption) + "\n            ")]) : _vm._e(), _vm._v(" "), _c('thead', [_c('tr', [(_vm.showEdit) ? _c('th', {
     on: {
       "click": function($event) {
-        $event.stopPropagation();
+        $event.preventDefault();
+        _vm.toggleCheckedAll()
       }
     }
   }, [_c('div', {
@@ -26625,6 +26631,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "checked": Array.isArray(_vm.checkedAll) ? _vm._i(_vm.checkedAll, null) > -1 : (_vm.checkedAll)
     },
     on: {
+      "click": function($event) {
+        $event.stopPropagation();
+      },
       "__c": function($event) {
         var $$a = _vm.checkedAll,
           $$el = $event.target,
@@ -26642,7 +26651,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v(" "), _c('label', [_vm._v("All")])])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.columns), function(column) {
+  }), _vm._v(" "), _c('label', [_vm._v(" ")])])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.columns), function(column) {
     return _c('table-column-header', {
       key: column.show,
       attrs: {

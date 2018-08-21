@@ -21,10 +21,10 @@
                 </caption>
                 <thead>
                 <tr>
-                    <th v-if="showEdit" @click.stop="">
+                    <th v-if="showEdit" @click.prevent="toggleCheckedAll()">
                         <div class="ui checkbox">
-                            <input type="checkbox" v-model="checkedAll">
-                            <label>All</label>
+                            <input type="checkbox" v-model="checkedAll" @click.stop="">
+                            <label>&nbsp;</label>
                         </div>
                     </th>
                     <table-column-header
@@ -321,6 +321,11 @@
                 this.filter = previousState.filter;
 
                 this.saveState();
+            },
+            toggleCheckedAll() {
+                if (this.showEdit) {
+                    this.checkedAll = !this.checkedAll
+                }
             },
         },
     };
