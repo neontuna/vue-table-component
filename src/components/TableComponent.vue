@@ -256,6 +256,8 @@
 
             async refresh() {
                 await this.mapDataToRows();
+
+                this.checkedRows = []
             },
 
             changeSorting(column) {

@@ -3602,6 +3602,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
                                     return this.mapDataToRows();
 
                                 case 2:
+
+                                    this.checkedRows = [];
+
+                                case 3:
                                 case 'end':
                                     return _context5.stop();
                             }
