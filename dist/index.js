@@ -26609,6 +26609,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         $event.stopPropagation();
       }
     }
+  }, [_c('div', {
+    staticClass: "ui checkbox"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -26640,7 +26642,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v(" "), _c('label', [_vm._v("All")])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.columns), function(column) {
+  }), _vm._v(" "), _c('label', [_vm._v("All")])])]) : _vm._e(), _vm._v(" "), _vm._l((_vm.columns), function(column) {
     return _c('table-column-header', {
       key: column.show,
       attrs: {

@@ -22,8 +22,10 @@
                 <thead>
                 <tr>
                     <th v-if="showEdit" @click.stop="">
-                        <input type="checkbox" v-model="checkedAll">
-                        <label>All</label>
+                        <div class="ui checkbox">
+                            <input type="checkbox" v-model="checkedAll">
+                            <label>All</label>
+                        </div>
                     </th>
                     <table-column-header
                             @click="changeSorting"
